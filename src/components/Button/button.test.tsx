@@ -1,13 +1,13 @@
 import React from 'react'
 import { render, fireEvent } from "@testing-library/react"
-import Button, { ButtonProps, ButtonSize, ButtonType } from './button'
+import Button, { ButtonProps } from './button'
 // 捕获函数是否被调用
 const defaultProps = {
     onClick: jest.fn()
 }
 const testProps: ButtonProps = {
-    btnType: ButtonType.Primary,
-    size: ButtonSize.Large,
+    btnType: 'primary',
+    size: 'lg',
     className: 'jclass'
 }
 const disabledProps: ButtonProps = {
@@ -33,7 +33,7 @@ describe('test button component', () => {
         expect(e).toHaveClass('btn-primary btn-lg jclass')
     })
     it('should render a link when btnType equals link and href is provided', () => {
-        const wrapper = render(<Button btnType={ButtonType.Link} href="http://www.baidu.com">Link</Button>)
+        const wrapper = render(<Button btnType={'link'} href="http://www.baidu.com">Link</Button>)
         const e = wrapper.getByText('Link')//fanhui zhi
         expect(e).toBeInTheDocument()
         expect(e.tagName).toEqual('A')
